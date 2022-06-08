@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //自定义打包jar task
+    task makeJar(type:Jar){
+        archivesBaseName = "nplib-0.0.1"
+//        from(project.zipTree('build/intermediates/packaged-classes/release/classes.jar'))
+        from(project.zipTree('build/intermediates/javac/debug/classes')) //路径老是变
+        from(project.zipTree('E:\\\\jason_android\\\\androidstudy\\\\gradle-7.2\\\\wrapper\\\\dists\\\\gradle-7.2-bin\\\\caches\\\\transforms-2\\\\files-2.1\\\\409b5462ff0bbec76e7608eb2b360e8b\\\\mmkv-1.0.22\\\\jars\\\\classes.jar'))
+//        from(project.zipTree('C:\\Users\\260439\\.gradle\\caches\\transforms-3\\32b4fb42e4db055bd3d20bfc9d30f1f6\\transformed\\jetified-mmkv-1.0.22\\jars\\classes.jar'))
+        destinationDir = file('build/libs')
+    } //C:\Users\260439\.gradle\caches\transforms-3\32b4fb42e4db055bd3d20bfc9d30f1f6\transformed\jetified-mmkv-1.0.22\jars\classes.jar
+    makeJar.dependsOn(build)
+}
+
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'com.tencent:mmkv:1.0.22'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.3'
+    implementation 'com.github.gzu-liyujiang:Android_CN_OAID:4.2.4'
+}
