@@ -14,7 +14,7 @@ repositories {
 ### 2. 需要依赖的 module 的 `build.gradle` 添加依赖
 
 ```gradle
-implementation '***.GreeNp:v0.0.1'
+implementation 'com.github.arksjs:Np-Android:v1.0.0'
 ```
 
 ## 集成
