@@ -68,7 +68,7 @@ public class MMKVUtil {
             kv = MMKV.defaultMMKV();
         } else {
             MMKV.initialize(savePath);
-            kv = MMKV.mmkvWithID(savePath);
+            kv = MMKV.mmkvWithID(savePath,MMKV.MULTI_PROCESS_MODE);
         }
     }
 

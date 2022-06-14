@@ -45,7 +45,8 @@ public class GreeNp {
         uniqueId = uniqueDevId;
         isDebugLog = isDebug;
         mAndroidOs = DeviceIdUtil.getPlatForm();
-        new MMKVUtil.Builder().setSavePath(application.getExternalFilesDir("np_dir").getPath()).build();
+//        new MMKVUtil.Builder().setSavePath(application.getExternalFilesDir("np_dir").getPath()).build();
+        new MMKVUtil.Builder().setSavePath("").build();//上面无法打开 np_dir文件夹
         MMKVUtil.remove(NpConfig.PUBLIC_FRONT_RUN); //app启动重置
         MMKVUtil.remove(NpConfig.PUBLIC_LAST_TRACK);
         MMKVUtil.addStr(NpConfig.PUBLIC_APP, applicationKey);
@@ -173,7 +174,11 @@ public class GreeNp {
     public static JSONObject setNpBody(String dsc, String src, String tp, String ev, String evv) {
         JSONObject js = new JSONObject();
         try {
-            js.put("ak", MMKVUtil.getStr(NpConfig.PUBLIC_APP));
+            String ak=applicationKey;
+            if (TextUtils.isEmpty(applicationKey)) {
+                ak = MMKVUtil.getStr(NpConfig.PUBLIC_APP);
+            }
+            js.put("ak",ak);
             js.put("u", dsc);
             js.put("pf", mAndroidOs);
             js.put("rf", src);
@@ -198,6 +203,7 @@ public class GreeNp {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        printLog("js="+js);
         return js;
     }
 

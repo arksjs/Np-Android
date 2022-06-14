@@ -15,7 +15,8 @@ public class NpApp extends Application {
         super.onCreate();
         //设备唯一id
         //np统计sdk初始化
-        GreeNp.init(this,"352CEF51DE68B0B7EBE1F4955A339A93");
+//        GreeNp.init(this,"352CEF51DE68B0B7EBE1F4955A339A93");
+        GreeNp.init(this,"FBE09CB25E62E61F86633F2B475FB982");
 //        String uniqueId = Settings.Secure.getString(getContentResolver(), "android_id");
 //        GreeNp.init(this,"352CEF51DE68B0B7EBE1F4955A339A93",uniqueId,true);
 

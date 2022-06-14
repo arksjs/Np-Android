@@ -37,4 +37,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation project(':sdk')
+    //np事件统计
+//    implementation 'com.github.arksjs:Np-Android:v1.0.0'
 }
