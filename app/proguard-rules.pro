@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-keepattributes *Annotation*,InnerClasses,Signature,EnclosingMethod
+-optimizationpasses 5#
+#混淆时不适用大小写混合，混合后的类名为小写
+-dontusemixedcaseclassnames
+#第三方jar包不被混淆
+-keep class com.github.test.** {*;}
